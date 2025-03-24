@@ -22,7 +22,7 @@ class bc_LSTM:
 	def __init__(self, args):
 		self.classification_mode = args.classify
 		self.modality = args.modality
-		self.PATH = "../data/models/{}_weights_{}.hdf5".format(args.modality,self.classification_mode.lower())
+		self.PATH = "../data/models/{}_weights_{}.keras".format(args.modality,self.classification_mode.lower())
 		self.OUTPUT_PATH = "../data/pickles/{}_{}.pkl".format(args.modality,self.classification_mode.lower())
 		print("Model initiated for {} classification".format(self.classification_mode))
 
