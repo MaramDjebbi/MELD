@@ -142,7 +142,7 @@ class bc_LSTM:
 		    return new_shape
 
 		def reshaper(x):
-			return K.expand_dims(x, axis=3)
+			return K.expand_dims(K.expand_dims(x, axis=1), axis=-1)
 
 		def flattener(x):
 			x = K.reshape(x, [-1, x.shape[1]*x.shape[3]])
@@ -161,7 +161,10 @@ class bc_LSTM:
 			
 			#cnn-sent
 			emb_output = embedding(local_input)
-			reshape = Lambda(reshaper, output_shape=(50, 300))(emb_output)
+			reshape = Lambda(reshaper)(emb_output)
+
+			reshape = K.squeeze(reshape, axis=1)
+			
 			concatenated_tensor = Concatenate(axis=1)([maxpool_0(conv_0(reshape)), maxpool_1(conv_1(reshape)), maxpool_2(conv_2(reshape))])
 			flatten = Lambda(flattener, output_shape=flattener_output_shape,)(concatenated_tensor)
 			dense_output = dense_func(flatten)
