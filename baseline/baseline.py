@@ -161,7 +161,7 @@ class bc_LSTM:
 			
 			#cnn-sent
 			emb_output = embedding(local_input)
-			reshape = Lambda(reshaper)(emb_output)
+			reshape = Lambda(reshaper, output_shape=(50, 300))(emb_output)
 			concatenated_tensor = Concatenate(axis=1)([maxpool_0(conv_0(reshape)), maxpool_1(conv_1(reshape)), maxpool_2(conv_2(reshape))])
 			flatten = Lambda(flattener, output_shape=flattener_output_shape,)(concatenated_tensor)
 			dense_output = dense_func(flatten)
