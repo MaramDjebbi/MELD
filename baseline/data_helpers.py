@@ -195,8 +195,8 @@ class Dataloader:
 
     def load_bimodal_data(self,):
         
-        TEXT_UNIMODAL = "./data/pickles/text_{}.pkl".format(self.MODE.lower())
-        AUDIO_UNIMODAL = "./data/pickles/audio_{}.pkl".format(self.MODE.lower())
+        TEXT_UNIMODAL = "../data/pickles/text_{}.pkl".format(self.MODE.lower())
+        AUDIO_UNIMODAL = "../data/pickles/audio_{}.pkl".format(self.MODE.lower())
 
         #Load features
         train_text_x, val_text_x, test_text_x = pickle.load(open(TEXT_UNIMODAL, "rb"), encoding='latin1')
