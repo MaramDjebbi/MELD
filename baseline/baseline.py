@@ -277,7 +277,7 @@ if __name__ == "__main__":
 	args.modality = args.modality.lower()
 	
 	# Check directory existence
-	for directory in ["./data/pickles", "./data/models"]:
+	for directory in ["../data/pickles", "../data/models"]:
 		if not os.path.exists(directory):
 		    os.makedirs(directory)
 
